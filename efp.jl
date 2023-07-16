@@ -104,8 +104,6 @@ animation = @animate for i in iter
     )
 end
 
-# gif(animation,"results.gif",fps=24)
-
 
 
 

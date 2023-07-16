@@ -88,7 +88,7 @@ layout = @layout [a b; c]
 iter = ProgressBar(1:nₜ)
 animation = @animate for i in iter
 #animation = for i in iter
-    local prob_sde = SDEProblem(langevin, noise_langevin, u, (0.0, S))
+    local prob_sde = SDEProblem(langevin, noise_langevin, (rand(mv_norm_randomizer).+1).*u, (0.0, S))
     local ensembleprob = EnsembleProblem(prob_sde)
     local sol = solve(ensembleprob, RKMil(), EnsembleThreads(), trajectories = M, dt=Δs)
     global u=αₗ*Δt.*timepoint_mean(sol,S)+(1-αₗ*Δt).*u
